@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess Win/Draw/Loss Predictor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Chess Win/Draw/Loss Predictor</h1>
+      <p>Enter an evaluation and Elo range, then choose your side to see predicted probabilities.</p>
+    </header>
+
+    <section class="card">
+      <div class="field-row">
+        <label for="evalInput">Evaluation</label>
+        <input id="evalInput" type="number" step="0.1" min="-20" max="20" value="0" />
+      </div>
+
+      <div class="field-row">
+        <label for="eloRange">Average Elo Range</label>
+        <select id="eloRange"></select>
+      </div>
+
+      <div class="field-row radio-row">
+        <span>You play as</span>
+        <label><input type="radio" name="color" value="white" checked /> White</label>
+        <label><input type="radio" name="color" value="black" /> Black</label>
+      </div>
+
+      <button id="predictButton">Predict Probabilities</button>
+    </section>
+
+    <section class="card result-card">
+      <h2>Prediction</h2>
+      <div class="result-grid">
+        <div>
+          <span class="label">Win</span>
+          <span id="winProb" class="value">--</span>
+        </div>
+        <div>
+          <span class="label">Draw</span>
+          <span id="drawProb" class="value">--</span>
+        </div>
+        <div>
+          <span class="label">Loss</span>
+          <span id="lossProb" class="value">--</span>
+        </div>
+      </div>
+      <p class="note">Probabilities are computed from the saved Elo-split regression models.</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
