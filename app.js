@@ -77,7 +77,7 @@ function formatPct(value) {
 
 function updateResults() {
   const eloKey = select.value;
-  const evalValue = Number(evalInput.value) || 0;
+  const evalValue = Number(evalInput.value) || 0.2;
   const color = document.querySelector('input[name="color"]:checked').value;
   const { winProb, drawProb, lossProb } = predict(evalValue, eloKey, color);
 
