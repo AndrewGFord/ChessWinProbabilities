@@ -10,7 +10,7 @@
   <div class="container">
     <header>
       <h1>Chess Win/Draw/Loss Predictor</h1>
-      <p>Enter an evaluation and Elo range, then choose your side to see predicted probabilities.</p>
+      <p>Enter an evaluation and Lichess Elo, then choose your side to see predicted probabilities.</p>
     </header>
 
     <section class="card">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="field-row">
-        <label for="eloRange">Average Elo Range</label>
+        <label for="eloRange">Lichess Elo rating</label>
         <select id="eloRange"></select>
       </div>
 
@@ -49,7 +49,7 @@
           <span id="lossProb" class="value">--</span>
         </div>
       </div>
-      <p class="note">Probabilities are computed from the saved Elo-split regression models.</p>
+      <p class="note">Probabilities are computed from saved logistic regression models. Games from December 2025 were sorted into groups based on the average Lichess Elo rating of the players, and models were trained on each group.</p>
     </section>
   </div>
 
