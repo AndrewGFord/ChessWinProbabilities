@@ -10,14 +10,15 @@
   <div class="container">
     <header>
       <h1>Chess Win/Draw/Loss Predictor</h1>
-      <p>Enter an evaluation and Lichess Elo, then choose your side to see predicted probabilities.</p>
+      <p>Enter an evaluation and Lichess Elo, then choose your side to see predicted probabilities. This model currently supports predictions for numerical evaluations, but not forced mate sequences.</p>
     </header>
 
     <section class="card">
       <div class="field-row">
-        <label for="evalInput">Evaluation</label>
+        <label for="evalInput">Computer Evaluation</label>
         <input id="evalInput" type="number" step="0.1" min="-20" max="20" value="0.2" />
       </div>
+      <a href="#" onclick="alert('At the start of the game, the player with the white pieces has a slight advantage. The starting value has been set to 0.2, the Stockfish evaluation for the starting position.')">Why 0.2?</a><br><br>
 
       <div class="field-row">
         <label for="eloRange">Lichess Elo rating</label>
