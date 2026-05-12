@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Model - Chess Win/Draw/Loss Predictor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>About the Model</h1>
+      <p><a href="index.html">Back to Predictor</a></p>
+    </header>
+
+    <section class="card">
+      <h2>Model Overview</h2>
+      <p>This chess win/draw/loss predictor uses logistic regression models trained on data from Lichess games. The models predict the probability of winning, drawing, or losing a game based on the current Stockfish evaluation and the average Elo rating of the players.</p>
+      <p>Lichess uses a similar logistic regression model trained only on high-level games to classify moves as inaccuracies, mistakes, or blunders in game analyses.</p>
+
+      <h3>Data Source</h3>
+      <p>The training data comes from publicly available Lichess games from December 2025. Each game includes move-by-move Stockfish evaluations and player Elo ratings.
+      </p>
+
+      <h3>Model Training</h3>
+      <p>Games are grouped by the average Elo rating of the players into ranges such as 800-1000, 1000-1200, etc. Separate logistic regression models are trained for each Elo range to account for skill differences; since lower-rated players are more likely to make mistakes, the chances of a player losing from a winning position or winning from a losing position are higher.</p>
+      <p>While games were grouped into bins based on the average Elo rating of the two players, it is generally sufficient for a player to enter their own Elo rating in the calculator. Lichess and other chess platforms attempt to match players with similar rankings for online games.</p>
+      <p>The model uses the Stockfish evaluation as the primary feature. Evaluations are measured in pawns (e.g., +1.5 means White is up by 1.5 pawns).</p>
+      <p>Positions with forced checkmate sequences and forced stalemate sequences were excluded from the model's training data.</p>
+
+      <h3>Limitations</h3>
+      <ul>
+        <li>The model does not handle forced mate sequences (evaluations like #5).</li>
+        <li>Predictions are based on historical data and may not reflect real-time play.</li>
+        <li>The model assumes standard chess rules and does not account for special situations like time pressure.</li>
+        <li>The model does not account for how "sharp" a position is; in other words, an evaluation that relies on a player finding one specific move is viewed the same as an evaluation with several good move options.</li>
+        <li>The model only includes games where a player chose to request a Stockfish evaluation from the Lichess interface. This may result in a biased selection of games, such as games where a player has an advantageous position, blunders, and loses or draws.</li>
+      </ul>
+
+      <h3>Technical Details</h3>
+      <p>The models are multinomial logistic regression classifiers implemented using scikit-learn. They predict three classes: loss (0), draw (1), or win (2) for the player to move.</p>
+      <p>For more details, see the source code in the repository.</p>
+    </section>
+  </div>
+</body>
+</html>
